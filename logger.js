@@ -13,4 +13,4 @@ log4js.configure({
 
 const logger = exports = module.exports = {};
 logger.main = log4js.getLogger('main');
-logger.main1 = log4js.getLogger('main1');
+logger.console = log4js.getLogger('main1');

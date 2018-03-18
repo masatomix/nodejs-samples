@@ -1,38 +1,33 @@
 "use strict";
 
-// npm install --save config log4js
+// npm install --save  nodemailer
 // npm start
-
-// https://github.com/log4js-node/log4js-node
 
 
 const me = this;
 
 const logger = require('./logger');
 const config = require('config');
-
+const nodemailer = require("nodemailer");
 
 module.exports.execute001 = () => {
-    const host = config.host;
-    const port = config.port;
-    const secure = config.secure;
-    const auth = config.auth;
+    const transporter = nodemailer.createTransport(config.smtp);
+    const mailOptions = {
+        from: config.mail.from,
+        to: config.mail.to,
+        subject: 'test mail',
+        text: 'メール送信テスト'
+    };
 
-    logger.main1.debug(config);
-
-    logger.main.debug(host);
-    logger.main.debug(port);
-    logger.main.debug(secure);
-    logger.main.debug(auth);
-
-    logger.main1.info(host);
-    logger.main1.info(port);
-    logger.main1.info(secure);
-    logger.main1.info(auth.user);
-    logger.main1.info(auth.pass);
-
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            logger.console.error("send mail failed.");
+            logger.console.error(error.message);
+        }
+        logger.console.debug("send mail success.");
+        logger.console.debug('Message sent: %s', info.messageId);
+    });
 };
 
 
 me.execute001();
-
