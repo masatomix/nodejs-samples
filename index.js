@@ -20,8 +20,7 @@ module.exports.get_post_001 = () => {
     me.post_json();
 };
 
-//https://stackoverflow.com/questions/16903476/node-js-http-get-request-with-query-string-parameters
-
+// https://stackoverflow.com/questions/16903476/node-js-http-get-request-with-query-string-parameters
 
 
 module.exports.get_query = () => {
@@ -29,7 +28,7 @@ module.exports.get_query = () => {
         {
             uri: request_uri,
             qs: {
-                UsernameOrEmailAddress: "value1",
+                UsernameOrEmailAddress: "get_query",
                 Password: "value2"
             }
         };
@@ -56,7 +55,7 @@ module.exports.post_body = () => {
             headers: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
-            body: 'UsernameOrEmailAddress=' + 'value1' + '&Password=' + 'value2',
+            body: 'UsernameOrEmailAddress=' + 'post_body' + '&Password=' + 'value2',
         };
 
     request.post(options,
@@ -81,9 +80,8 @@ module.exports.post_form = () => {
             headers: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
-            // body: 'UsernameOrEmailAddress=' + userid + '&Password=' + password,
             form: {
-                UsernameOrEmailAddress: "value1",
+                UsernameOrEmailAddress: "post_form",
                 Password: "value2"
             },
         };
@@ -110,7 +108,7 @@ module.exports.post_json = () => {
             uri: request_uri,
             // body: 'UsernameOrEmailAddress=' + userid + '&Password=' + password,
             json: {
-                UsernameOrEmailAddress: "value1",
+                UsernameOrEmailAddress: "post_json",
                 Password: "value2"
             },
         };
