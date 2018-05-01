@@ -18,6 +18,7 @@ module.exports.get_post_001 = () => {
     me.post_body();
     me.post_form();
     me.post_json();
+    me.request();
 };
 
 // https://stackoverflow.com/questions/16903476/node-js-http-get-request-with-query-string-parameters
@@ -118,6 +119,33 @@ module.exports.post_json = () => {
         };
 
     request.post(options,
+        function (err, response, body) {
+            if (err) {
+                console.log('error:', error);
+                return;
+            }
+            if (response && body) {
+                console.log('status Code:', response && response.statusCode);
+                console.log(body);
+            }
+        }
+    );
+};
+
+// Methodをパラメタで指定するパタン
+module.exports.request = () => {
+
+    const options =
+        {
+            method: 'POST',
+            uri: request_uri,
+            json: {
+                UsernameOrEmailAddress: "request",
+                Password: "value2"
+            },
+        };
+
+    request(options,
         function (err, response, body) {
             if (err) {
                 console.log('error:', error);
