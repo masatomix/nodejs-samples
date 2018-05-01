@@ -23,6 +23,7 @@ module.exports.get_post_001 = () => {
 // https://stackoverflow.com/questions/16903476/node-js-http-get-request-with-query-string-parameters
 
 
+// Query StringをつけてGETするパタン
 module.exports.get_query = () => {
     const options =
         {
@@ -48,6 +49,7 @@ module.exports.get_query = () => {
 };
 
 
+// Formで Content-Type: application/x-www-form-urlencoded でPOSTするパタン(BODY文字列は自分で作成)
 module.exports.post_body = () => {
     const options =
         {
@@ -72,6 +74,7 @@ module.exports.post_body = () => {
     );
 };
 
+// Formで Content-Type: application/x-www-form-urlencoded でPOSTするパタン(BODY文字列はJSONから自動生成してもらう)
 module.exports.post_form = () => {
 
     const options =
@@ -101,6 +104,7 @@ module.exports.post_form = () => {
 };
 
 
+// JSONを Content-Type: application/json でPOSTするパタン(BODYのJSON文字列は自動生成してもらう)
 module.exports.post_json = () => {
 
     const options =
